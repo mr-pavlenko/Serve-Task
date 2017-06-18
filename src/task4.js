@@ -18,7 +18,7 @@ function task4(str) {
             }
 
             if (str[indexLeft] == str[indexRight]) {
-                splitOfIndex(indexLeft, indexRight + 1)
+                spliceOfIndex(indexLeft, indexRight + 1)
 
                 isPoly(--indexLeft, ++indexRight, currentIndex);
 

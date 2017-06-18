@@ -13,7 +13,7 @@ second = {
 console.log(task2(first, second));
 
 //Задание 3
-masOfTriangle = [
+triangles = [
     {
         vertices: 'ABC',
         a: 10.112,
@@ -33,19 +33,19 @@ masOfTriangle = [
         c: 21.34
     }
 ];
-console.log(task3(masOfTriangle));
+console.log(task3(triangles));
 
 //Задание 4
 console.log(task4(15453211236776));
 
 //Задание 5
-obj = {
+context = {
     minimum: 100000,
     maximum: 100011
 
 };
 
-console.log(task5(obj));
+console.log(task5(context));
 
 //Задание 6
 console.log(task6(10,20));
