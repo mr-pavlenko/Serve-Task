@@ -1,28 +1,40 @@
-function desk (height,width,char){
-    var str = '',
-    div = document.createElement('div'),
-    body = document.getElementsByTagName('body');
-    body[0].appendChild(div);
+function task1 (height,width,char){
+    if (!height  && !width && !char ){
+        return {status: 'failed',
+            reason: 'Вы не передали данные, 0 - некоректная высота/ширина, пустая строка не может быть символом'};
 
-    for (var i = 0; i<=height; i++){
-        for (var j = 0; j<=width; j++){
+    }else if(typeof height != 'number' && typeof width != 'number' && typeof char != 'string'){
+        return {status: 'failed',
+                reason: 'Неверный формат входных данных'};
 
-            if (i%2==0){
-                var schar= '&nbsp'+char
-            }else{
-                var schar= char+'&nbsp';
+    }else {
+        let str = '',
+            intermediateChar;
+
+        for (let i = 0; i < height; i++) {
+            if (i % 2 === 0) {
+                for (let j = 0; j < width; j++) {
+                    if (j === (width - 1)) {
+                        intermediateChar = char;
+                        str += intermediateChar;
+
+                    } else {
+                        intermediateChar = `${char} `;
+                        str += intermediateChar;
+
+                    }
+                }
+            } else {
+                for (let j = 0; j < width - 1; j++) {
+                    intermediateChar = ` ${char}`;
+                    str += intermediateChar;
+
+                }
             }
-
-            str = str + schar;
+            str = str + '\n'
 
         }
-        str=str+'<br>'
 
+        return str;
     }
-    div.innerHTML = str;
 }
-
-// длина * 2 -1
-функция возращает
-
-desk(4,6,'*');

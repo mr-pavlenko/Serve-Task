@@ -1,26 +1,52 @@
-function isPoli(num) {
-    if(num%2==0){
-        return 0;
+function task4(str) {
+    if (!str){
+        return {status: 'failed',
+            reason: 'Вы не передали данные'};
+
     }else {
-        num = num + '';
-        for (var i = 0; i < num.length; i++) {
+        let indexLeft = 1,
+            indexRight = 2,
+            currentIndex = 1,
+            resultStr = '';
+        str = String(str);
 
-                if (num[i]==num[num.length-1-i]) {
+        isPoly(indexLeft, indexRight, currentIndex);
 
-                    result = 'palindrom';
-
-                }else{
-                    result = 0;
-                }
+        function isPoly(indexLeft, indexRight, currentIndex) {
+            if (currentIndex == str.length - 1) {
+                return;
             }
 
-        }
-        result+=num;
-        return result;
+            if (str[indexLeft] == str[indexRight]) {
+                splitOfIndex(indexLeft, indexRight + 1)
 
+                isPoly(--indexLeft, ++indexRight, currentIndex);
+
+            } else if ((currentIndex == indexLeft) && (str[indexLeft - 1]) == (str[indexRight])) {
+                spliceOfIndex(indexLeft - 1, indexRight + 1);
+
+                isPoly(indexLeft - 2, indexRight + 1, currentIndex);
+
+            } else {
+                currentIndex++;
+                indexLeft = currentIndex;
+                indexRight = currentIndex + 1;
+
+                isPoly(indexLeft, indexRight, currentIndex);
+
+            }
+        }
+
+        function spliceOfIndex(startIndex, endIndex) {
+
+            let interStr = str.slice(startIndex, endIndex);
+
+            if (interStr.length > resultStr.length)
+                resultStr = interStr;
+
+        }
+
+        return resultStr;
+    }
 
 }
-
-alert(isPoli(123321));
-
-//максимальное количество символов +

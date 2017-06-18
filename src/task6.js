@@ -1,15 +1,21 @@
-function row (n,m) {
-    var str='';
-    var leng=n*3-1;
-    while( str.length<=leng){
-        var   inter = ( Math.floor(Math.random() * m) );
-        if((inter*inter)>m){
-            str+=inter+','
+function task6 (n,m) {
+    if (!n && !m){
+        return {status: 'failed',
+            reason: 'Вы не передали данные'};
+
+    }else {
+        let str = '',
+            leng = n * 2;
+
+        while (str.length <= leng) {
+            let inter = ( Math.floor(Math.random() * m) );
+
+            if ((inter * inter) > m) {
+                str += inter + ',';
+
+            }
         }
+        return str;
     }
-    return str;
 
 }
-
-
-alert(row(7,100));

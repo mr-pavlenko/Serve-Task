@@ -1,41 +1,50 @@
-function ticket (context) {
-    var min=context.minimum;
-    var max=context.maximum;
-    var tickets = 0;
-    var num='';
-    for(var i = min; i<=max; i++){
+function task5(context) {
+    if (!context){
+        return {status: 'failed',
+            reason: 'Вы не передали данные'};
 
-       if(i>=1000) {
-           var num='';
-           num += i;
-
-           switch (num.length) {
-               case 4:
-                   num = '00' + num;
-                   break;
-               case 5:
-                   num = '0' + num;
-                   break;
-               default:
-                   break;
-           }
-           if((num[0]+num[1]+num[2]) == (num[3]+num[4]+num[5]))
-           {
-               tickets++;
-           }
-       }
+    }else {
+        let min = context.minimum,
+            max = context.maximum,
+            countFirstMethod = 0,
+            countSecondMethod = 0,
+            result = {};
 
 
+        for (let i = min; i <= max; i++) {
+            let str = String(i),
+                firstPart = Number(str[0]) + Number(str[1]) + Number(str[2]),
+                secondPart = Number(str[3]) + Number(str[4]) + Number(str[5]);
+
+            if (firstPart == secondPart) {
+                countFirstMethod++;
+
+            }
+            firstPart = Number(str[0]) + Number(str[2]) + Number(str[4]);
+            secondPart = Number(str[1]) + Number(str[3]) + Number(str[5]);
+
+            if (firstPart == secondPart) {
+                countSecondMethod++;
+
+            }
+        }
+        result.firstMethod = countFirstMethod;
+        result.secondMethod = countSecondMethod;
+
+        if (countFirstMethod > countSecondMethod) {
+            result.winner = 'Первый метод';
+
+        } else if (countSecondMethod > countFirstMethod) {
+            result.winner = 'Второй метод';
+
+        } else {
+            result.winner = 'Колличество билетов одинаковое';
+
+        }
+
+        return result;
+    }
 }
-    return tickets;
-}
 
-obj = {
-    minimum: 998,
-    maximum: 1001
-
-};
-
-alert(ticket(obj));
 
 //мин<='xxxxxx'<=max , max=>min

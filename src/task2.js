@@ -1,26 +1,21 @@
-function  isFit(envelope1,envelope2) {
-    if (envelope1.a <= envelope2.c && envelope1.b <= envelope2.d){
+function  task2(envelope1,envelope2){
+    if (!envelope1 && !envelope2){
+        return {status: 'failed',
+                reason: 'Вы не передали данные'};
 
-        return 2;
+    }else {
+        let diagonalFirst = Math.sqrt((envelope1.a * envelope1.a) + (envelope1.b * envelope1.b)),
+            diagonalSecond = Math.sqrt((envelope2.c * envelope2.c) + (envelope2.d * envelope2.d));
 
-    }else if (envelope2.c <= envelope1.a && envelope2.d <= envelope1.b){
+        if (diagonalFirst > diagonalSecond) {
+            return 1;
 
-        return 1;
+        } else if (diagonalFirst < diagonalSecond) {
+            return 2;
 
-    }else{
+        } else {
+            return 0;
 
-        return 0;
-
+        }
     }
 }
-first = {
-    a:12,
-    b: 14
-};
-second = {
-    c: 10,
-    d: 8
-};
-alert(isFit(first,second));
-
-// Полня проверка
